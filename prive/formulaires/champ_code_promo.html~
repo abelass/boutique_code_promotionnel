@@ -1,0 +1,8 @@
+#CACHE{0}
+[(#SAISIE{input,code_promo,label=<:codeprom:code_promo:>,'',datas=#ENV{code_promo}})]
+<li class="editer_code_promo">
+	[(#ENV{erreurs}|non)[<span class="reponse_formulaire">(#CODE_PROMO|verifier_code_promo{false})</span>]]
+	<div class="boutons">
+		<input  class="submit" type="submit" name="test_code" value="<:codeprom:teste_code:>"/>
+	<div>
+</li>

@@ -1,0 +1,15 @@
+<?php
+	$code_promo=_request('code_promo');
+
+
+	$row = sql_fetsel('*','spip_codeprom_codes_promo','code_promo="'.$code_promo.'"');
+
+	if($code_promo){
+		// le code n'existe pas dans la base
+		if(!$row['code_promo']) echo '<div>'._T('codeprom:erreur_code_faux').'</div>';
+	// le code n'existe est perimÃ©	
+	elseif($row['date_fin']<date('Y-m-d')) echo '<div>'._T('codeprom:erreur_code_perime').'</div>';
+	// le code non réutilisable a déÃ  Ã©tÃ© utilisÃ©
+	elseif($row['reutilisable'] AND $row['utilise']=='oui')echo '<div>'._T('codeprom:erreur_code_utilise').'</div>';	
+		}
+?>

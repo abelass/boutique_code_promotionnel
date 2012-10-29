@@ -1,0 +1,52 @@
+<div class="cadre cadre-r">
+	<B_commande>
+		<div id="commande" class="cadre_padding">
+			<h1><:boutique:detail_commande:></h1>
+				<BOUCLE_commande(BOUTIQUE_COMMANDE){id_commande}>
+					<div>	
+						<span class="titre"><:nom:> :</span> <span class="valeur">#NOM</span>	
+						</div>		
+						<div>
+							<span class="titre"><:boutique:email:> :</span> <span class="valeur"><a href="mailto:#EMAIL">#EMAIL</a></span>	
+							</div>
+							<div>
+								<div class="titre"><:boutique:adresse:> </div>
+									<div  class="valeur adresse">
+										#ADRESSE
+									</div>
+									<span class="valeur cp">#CODE_POSTAL</span> <span class="valeur ville">#VILLE</span>	
+								</div>
+								<div>
+									<span class="titre"><:boutique:nom_etoile:> :</span> <span class="valeur">#TITRE</span>	
+									</div>	
+									<div>
+										<span class="titre"><:boutique:constellation:> :</span> 
+										<span class="valeur">
+										<BOUCLE_constellation(MOTS){id_mot=#ID_OPTION}>
+										#TITRE
+									</BOUCLE_constellation>
+								</span>	
+							</div>	
+							<div>	
+								<span class="titre"><:boutique:comment:> :</span> <span class="valeur">#COMMENTAIRE</span>	
+								</div>	
+								<div>	
+									<span class="titre"><:boutique:date_enregistrement:> :</span> <span class="valeur">[(#DATE_ENREGISTREMENT|affdate{'d-m-Y'})]</span>	
+									</div>											
+									
+									<div>
+										<span class="titre"><:boutique:info_prix:> :</span> <span class="valeur">#PRIX [(#CODE_DEVISE|traduire_devise)]</span>	
+										</div>	
+										<div>
+										<span class="titre"><:boutique:statut:> :</span> <span class="valeur"> [(#STATUT|=={ok}|?{ok,-})]</span>	
+										</div>						
+										<div>	
+										<span class="titre"><:boutique:date_vente:> :</span> <span class="valeur">[(#DATE_CREATION|affdate{'d-m-Y'})]</span>	
+										</div>					
+										<div>	
+										</BOUCLE_commande>
+									</B_commande>
+								</ul>
+							</div>
+						</B_commande>
+</div>

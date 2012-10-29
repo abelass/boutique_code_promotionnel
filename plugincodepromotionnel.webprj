@@ -1,0 +1,59 @@
+<!DOCTYPE webproject>
+<webproject>
+  <project type="Local" name="plugin code promotionnel" encoding="utf8" >
+    <upload/>
+    <author/>
+    <email/>
+    <defaultDTD>-//W3C//DTD XHTML 1.0 Strict//EN</defaultDTD>
+    <item url="img/" uploadstatus="1" />
+    <item url="img/depliertop.gif" uploadstatus="1" />
+    <item url="lang/" uploadstatus="1" />
+    <item url="prive/" uploadstatus="1" />
+    <item url="plugin.xml" uploadstatus="1" />
+    <item url="" uploadstatus="1" />
+    <templates>templates/</templates>
+    <toolbars>toolbars/</toolbars>
+    <item url="codeprom_mes_fonctions.php" uploadstatus="1" />
+    <item url="codeprom_pipelines.php" uploadstatus="1" />
+    <annotations/>
+    <item url="lang/codeprom_fr.php" uploadstatus="1" />
+    <item url="prive/formulaires/" uploadstatus="1" />
+    <item url="prive/formulaires/champ_code_promo.html" uploadstatus="1" />
+    <item url="base/" uploadstatus="1" />
+    <item url="base/codeprom_install.php" uploadstatus="1" />
+    <item url="base/codeprom_install.php~" uploadstatus="1" />
+    <item url="base/codeprom_tables_auxiliaires.php" uploadstatus="1" />
+    <item url="base/codeprom_tables_principales.php" uploadstatus="1" />
+    <item url="base/codeprom_tables_principales.php~" uploadstatus="1" />
+    <item url="base/tables_interfaces.php" uploadstatus="1" />
+    <item url="formulaires/" uploadstatus="1" />
+    <item url="formulaires/editer_codes.html" uploadstatus="1" />
+    <item url="formulaires/editer_codes.html~" uploadstatus="1" />
+    <item url="formulaires/editer_codes.php" uploadstatus="1" />
+    <item url="formulaires/inc-jours.html" uploadstatus="1" />
+    <item url="formulaires/inc-mois.html" uploadstatus="1" />
+    <item url="exec/" uploadstatus="1" />
+    <item url="exec/codes_promo.php" uploadstatus="1" />
+    <item url="img/logo_promo.png" uploadstatus="1" />
+    <item url="prive/formulaires/champ_code_promo.html~" uploadstatus="1" />
+    <item url="templates/" uploadstatus="1" />
+    <item url="toolbars/" uploadstatus="1" />
+    <item url="codeprom_mes_fonctions.php~" uploadstatus="1" />
+    <item url="codeprom_pipelines.php~" uploadstatus="1" />
+    <item url="plugincodepromotionnel.session" uploadstatus="1" />
+    <item url="plugincodepromotionnel.webprj" uploadstatus="1" />
+    <item url="plugin.xml~" uploadstatus="1" />
+    <item url="prive/editer/" uploadstatus="1" />
+    <item url="formulaires/inc-editer_code_montants.html" uploadstatus="1" />
+    <item url="prive/editer/code_promo.html" uploadstatus="1" />
+    <item url="prive/afficher/code_promo.html" uploadstatus="1" />
+    <item url="prive/afficher/" uploadstatus="1" />
+    <item url="formulaires/inc-choix_trie.html" uploadstatus="1" />
+    <item url="action/" uploadstatus="1" />
+    <item url="action/gestion_codes.php" uploadstatus="1" />
+    <item url="action/gestion_codes.php~" uploadstatus="1" />
+    <item url="prive/afficher/code_promo_details.html" uploadstatus="1" />
+    <item url="testcode.html" uploadstatus="1" />
+    <item url="formulaires/cfg_boutique.html" uploadstatus="1" />
+  </project>
+</webproject>

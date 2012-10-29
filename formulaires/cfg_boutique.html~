@@ -1,0 +1,20 @@
+[(#REM)Insertion dans le fomrulaire cgf deu plugin boutique]
+
+<fieldset><legend><:codeprom:code_promo:></legend>
+	<p>
+		<label for="nombre_code"><:codeprom:nombre_code:> : <br />(max 40)</label>
+				
+		<div>
+			<input type="text" name="nombre_code" id="nombre_code" value="[(#ENV{args}|table_valeur{nombre_code})]" />
+		</div>
+	</p>
+	<p>
+		<label for="nombre_code"><:codeprom:code_perso:> : </label>
+				
+		<div>
+			<input type="text" name="code_perso" id="code_perso" value="[(#ENV{args}|table_valeur{code_perso})]" />
+		</div>
+	</p>	
+	
+			
+</fieldset>

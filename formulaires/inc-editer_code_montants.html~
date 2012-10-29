@@ -1,0 +1,10 @@
+#SET{erreurs,#ENV**{erreurs}|table_valeur{montant_absolue}}
+
+
+<B_art>
+
+<li class="editer montant obligatoire[ (#GET{erreurs}|oui)erreur]"><label for="champ_montant"><:codeprom:montant:><span class="obligatoire"> [Obligatoire]</span></label>
+[<span class='erreur_message'>(#GET{erreurs})</span>]</li>
+<BOUCLE_art(POUR){tableau #ENV{devises}}>
+	[(#SAISIE{input,code_#VALEUR,label=<:codeprom:montant_en:>&nbsp;[(#VALEUR|traduire_devise)],datas=#ENV{code_#VALEUR}})]
+</BOUCLE_art>

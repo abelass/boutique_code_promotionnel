@@ -1,0 +1,66 @@
+#CACHE{0}
+<h1><:codeprom:titre_code_promotionnels:></h1>
+	#SET{senstri,#ENV{senstri,1}}
+	
+	[(#ENV{tri}|oui)
+	#SET{senstri,#ENV{senstri,0}}
+	]
+	<B_code_prom>
+		<div id="lesauteurs" class="cadre cadre-liste" style="">
+			<tr class="cadre_padding">
+				<table class="arial2" style="width: 100%; border: 0px none;" cellpadding="2" cellspacing="0">
+					<tbody>	
+						<tr class="titrem">
+							<th>
+								<INCLURE{fond=formulaires/inc-choix_trie}{env}{champ=id_code_promo}{titre=id}/>
+							</th>
+							
+							<th>
+								<b><INCLURE{fond=formulaires/inc-choix_trie}{env}{champ=date_fin}{titre=<:date:>}{defaut=bas}/></b>
+							</th>
+							<th>
+								<b><INCLURE{fond=formulaires/inc-choix_trie}{env}{champ=titre}{titre=<:info_titre:>}/></b>
+							</th>							
+							<th>
+								<b><:codeprom:code_promo:></b>
+							</th>
+							<th>
+								<b><INCLURE{fond=formulaires/inc-choix_trie}{env}{champ=montant}{titre=<:codeprom:montant:>}/></b>
+							</th>
+							<th>
+								<b><:codeprom:reutilisable:></b>
+							</th>
+							<th>
+								<b><INCLURE{fond=formulaires/inc-choix_trie}{env}{champ=utilise}{titre=<:codeprom:utilise:>}/></b>
+							</th>
+							<th></th>
+						</tr>
+						[<tr><td colspan="8" class="pagination">(#PAGINATION)</td></tr>]
+						<BOUCLE_code_prom(CODEPROM_CODES_PROMO){par #ENV{tri,date_fin}}{utilise!=oui}{date_fin>=#DATE}{inverse #GET{senstri}}{pagination 20}>
+							<tr class="tr_liste">
+								<td class="arial1">#ID_CODE_PROMO</td>
+								<td class="arial1">[(#DATE_FIN|affdate{'d-m-Y'})]</td>
+								<td class="arial1">
+									#TITRE
+								</td>
+								<td class="arial1">#CODE_PROMO</td>
+								<td class="arial1">
+								#SET{montant,0}
+								[(#RELATIVE|oui)#SET{montant,#MONTANT|unserialize}]	
+								<BOUCLE_art(POUR){tableau #GET{montant}}>
+									<div>#VALEUR #CLE</div>
+								</BOUCLE_art>
+								#MONTANT
+								<//B_art>								
+								</td>		
+								<td class="arial1">[(#REUTILISABLE|?{<:codeprom:non:>,<:codeprom:oui:>})]</td>
+								<td class="arial1">#UTILISE</td>
+								<td><a class="ajax" href="[(#URL_ACTION_AUTEUR{gestion_codes,eliminer,#SELF}|parametre_url{id_code_promo,#ID_CODE_PROMO})]"><img src="#CHEMIN{prive/images/croix-rouge.gif}" title="<:spip:lien_supprimer:>" onclick="return confirm('<:codeprom:alerte_action:>');"/></a></td>
+							</tr>
+						</BOUCLE_code_prom>
+					</B_code_prom>
+					
+				</tbody></table>
+		</div>
+	</div>
+</B_code_prom>

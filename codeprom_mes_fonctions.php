@@ -1,0 +1,80 @@
+<?php
+include_spip('ecrire/inc/plugin');
+$plugins = liste_chemin_plugin_actifs();
+	
+		//Quelques filtres dU PLUGIN  boutique, au cas ou celui-ci n'est pas activé
+	
+if(!$plugins['BOUTIQUE']){
+	
+	function devises(){
+		$devises=array(
+			'AUD'=>'AUD',	 	 
+			'CAD'=>'CAD',	 	 
+			'CHF'=>'CHF',	 	 
+			'CZK'=>'CZK',	 	 
+			'DKK'=>'DKK', 	 
+			'EUR'=>'€',	 
+			'GBP'=>'£',	 
+			'HKD'=>'HKD',	 	 
+			'HUF'=>'HUF',	 	 
+			'ILS'=>'ILS',	 	 
+			'JPY'=>'¥',	 
+			'MXN'=>'MXN',	 	 
+			'NOK'=>'NOK',	 	 
+			'NZD'=>'NZD',	 	 
+			'PLN'=>'PLN',	 	 
+			'SEK'=>'SEK',	 	 
+			'SGD'=>'SGD',	 	 
+			'USD'=>'$'
+			);
+		
+		return $devises;
+		}
+	
+	function traduire_devise($code_devise){
+		$devises =devises();
+		$trad= $devises[$code_devise];
+	
+		return $trad;
+		}
+		
+	// modifié par rappor au boutique, la devise par défaut n'est pas défini dans cgf mais directement ici	
+	function devise_defaut(){
+		$defaut='EUR';
+		
+		return $defaut;
+		}
+
+	
+	}
+	
+function verifier_code_promo($code_promo='',$array=true){
+
+
+	include_spip('base/abstract_sql');
+
+	$test_code=_request('test_code');
+	$row = sql_fetsel('*','spip_codeprom_codes_promo','code_promo="'.$code_promo.'"');
+
+	
+	if($code_promo){
+		
+		// le code n'existe pas dans la base
+		if(!$row['code_promo']){$flux=_T('codeprom:erreur_code_faux');} 
+		// le code n'existe est perimé	
+		elseif($row['date_fin']<date('Y-m-d')) $flux=_T('codeprom:erreur_code_perime');
+		// le code non réutilisable a déjà  été utilisé
+		elseif($row['reutilisable'] AND $row['utilise']=='oui') $flux=_T('codeprom:erreur_code_utilise');
+		elseif($test_code){$flux=_T('codeprom:code_valide');}
+		
+		if($flux AND !$test_code AND $array){$flux=array('code_promo'=>$flux);}
+			
+		return $flux;
+
+	}
+	
+		
+		
+}
+
+?>

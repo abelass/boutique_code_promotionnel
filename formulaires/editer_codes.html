@@ -1,0 +1,83 @@
+#CACHE{0}
+
+
+#SET{date,#DATE}
+			
+<div class="formulaire_spip formulaire_editer_code ajax">
+	<form action="#ENV{action}" method="post">
+			#ACTION_FORMULAIRE{#ENV{action}}
+			<input type="hidden" value="#SELF" name="url_retour"/>
+		<div>
+
+			<ul>
+				[(#SAISIE{input,titre,label=<:info_titre:>,obligatoire=oui,datas=#ENV{titre}})]
+					
+				[(#SAISIE{input,code_promo,label=<:codeprom:code_promo:>,obligatoire=oui,datas=#ENV{code_promo}})]	
+
+				[(#SAISIE{radio,relative,
+					label=<:codeprom:montant_relativ:>,
+					defaut=[(#ENV{relative,''})],
+					datas=#ARRAY{
+						'',<:codeprom:oui:>,1,<:codeprom:non:>
+						}})]
+
+				<li>
+					<ul id="relativ">			
+					[(#SAISIE{input,montant,label=%,obligatoire=oui,datas=#ENV{code_promo}})]
+					</ul>
+				</li>					
+				<li>
+					<ul id="absolute">
+					<INCLURE{fond=formulaires/inc-editer_code_montants}{devises}{env}/>
+					</ul>
+				</li>
+					
+				#SET{erreurs,#ENV**{erreurs}|table_valeur{date_fin_annee}}
+				<li class="editer_date_fin obligatoire[ (#GET{erreurs}|oui)erreur]">
+				<label for="date_fin"><:codeprom:date_fin:></label>
+            			[<span class='erreur_message'>(#GET{erreurs})</span>]
+				
+				<INCLURE{fond=formulaires/inc-jours}{name=date_fin_jour}{date_fin_jour=#ENV{date_fin_jour,#GET{date}|affdate{jour}}}/>
+						
+				<INCLURE{fond=formulaires/inc-mois}{name=date_fin_mois}{date_fin_mois=#ENV{date_fin_mois,#GET{date}|affdate{mois}}}/>
+						
+				<input value="#ENV{date_fin_annee,#GET{date}|affdate{annee}}" size="4" class="text" name="date_fin_annee" id="annee_fin_ev" style="width: auto; display: inline;" type="text">    
+       			</li>		
+		
+				[(#SAISIE{radio,reutilisable,
+					label=<:codeprom:reutilisable:>,
+					defaut=[(#ENV{reutilisable,''})],
+					datas=#ARRAY{
+						'',<:codeprom:oui:>,1,<:codeprom:non:>
+						}})]
+			</ul>
+			
+		<script type="text/javascript">
+			$(document).ready(function(){		
+ 					$("#absolute").css("display","none");
+				 
+			});	 			   				 
+        		$(".radio").click(function(){
+				if ($('input[name=relative]:checked').val() == "1" ) {
+					$("#relativ").slideUp("fast");	//Slide Up Effect
+					$("#absolute").slideDown("fast");	//Slide Up Effect    			    
+      	 			//Slide Up Effect           	 		
+								
+				} else {
+					$("#absolute").slideUp("fast"); //Slide Down Effect
+					$("#relativ").slideDown("fast"); //Slide Down Effect           	 		           	 
+					}
+    		 		});
+
+				
+			</script>  	
+			
+
+		[(#ENV{message_ok}|=={prev}|non)
+			<p class="boutons"><input type="submit" name="prev" class="submit" value="<:spip:bouton_enregistrer:>" /></p>
+			]
+		
+		</div>
+	</form>
+	
+</div>
